@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | Creative Dev</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Variáveis de Cores Claras e Modernas */
+        :root {
+            --accent: #007AFF;
+            --accent-soft: #EBF5FF;
+            --bg-main: #F0F4F8;
+            --text-main: #1D1D1F;
+            --text-sub: #6E6E73;
+            --glass: rgba(255, 255, 255, 0.7);
+            --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-main);
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: var(--text-main);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Menu Minimalista Estilo Flutuante */
+        nav {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 600px;
+            background: var(--glass);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            padding: 15px 30px;
+            border-radius: 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            box-shadow: var(--card-shadow);
+            z-index: 1000;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-main);
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+
+        nav a:hover { color: var(--accent); }
+
+        /* Hero Section com Tipografia Minimalista */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            font-weight: 800;
+            letter-spacing: -2px;
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 span {
+            background: linear-gradient(90deg, #007AFF, #00C6FF);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-sub);
+            max-width: 500px;
+            margin-bottom: 40px;
+        }
+
+        /* Botão de Chamada com Efeito Hover */
+        .btn-cta {
+            background: var(--accent);
+            color: white;
+            padding: 16px 32px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            box-shadow: 0 10px 20px rgba(0, 122, 255, 0.2);
+            transition: 0.4s;
+        }
+
+        .btn-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(0, 122, 255, 0.3);
+        }
+
+        /* Seção de Projetos - Cards Modernos */
+        .work {
+            padding: 100px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            font-size: 2.5rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .project-card {
+            background: var(--glass);
+            border-radius: 24px;
+            padding: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .project-card:hover {
+            transform: scale(1.02);
+            background: white;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+        }
+
+        .project-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 12px;
+        }
+
+        .project-card p {
+            color: var(--text-sub);
+            font-size: 1rem;
+            margin-bottom: 25px;
+        }
+
+        .tech-pills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .pill {
+            background: var(--accent-soft);
+            color: var(--accent);
+            padding: 6px 14px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        /* Rodapé Limpo */
+        footer {
+            padding: 80px 20px;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-bottom: 20px;
+        }
+
+        .social-icons a {
+            color: var(--text-main);
+            font-size: 1.5rem;
+            transition: 0.3s;
+        }
+
+        .social-icons a:hover { color: var(--accent); }
+
+        @media (max-width: 600px) {
+            .grid { grid-template-columns: 1fr; }
+            nav { width: 95%; padding: 15px 15px; }
+            .hero h1 { font-size: 2.8rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div style="font-weight: 800; color: var(--accent);">STUDIO.</div>
+        <div style="display: flex; gap: 20px;">
+            <a href="#work">Projetos</a>
+            <a href="#about">Bio</a>
+            <a href="#contact">Contato</a>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <h1>Construindo o <span>Futuro Digital</span></h1>
+        <p>Desenvolvedor focado em interfaces limpas, código elegante e experiências de usuário memoráveis.</p>
+        <a href="#work" class="btn-cta">Explorar Projetos</a>
+    </header>
+
+    <section id="work" class="work">
+        <h2 class="section-title">Trabalhos Selecionados</h2>
+        <div class="grid">
+            <div class="project-card">
+                <div>
+                    <h3>Plataforma Cloud</h3>
+                    <p>Dashboard analítico para monitoramento de dados em tempo real com foco em performance.</p>
+                    <div class="tech-pills">
+                        <span class="pill">React</span>
+                        <span class="pill">TypeScript</span>
+                        <span class="pill">D3.js</span>
+                    </div>
+                </div>
+                <a href="#" style="margin-top: 25px; color: var(--accent); text-decoration: none; font-weight: 600;">Ver Detalhes →</a>
+            </div>
+
+            <div class="project-card">
+                <div>
+                    <h3>Mobile First E-com</h3>
+                    <p>Experiência de compra otimizada para dispositivos móveis com integração de pagamentos.</p>
+                    <div class="tech-pills">
+                        <span class="pill">Next.js</span>
+                        <span class="pill">Stripe</span>
+                        <span class="pill">Tailwind</span>
+                    </div>
+                </div>
+                <a href="#" style="margin-top: 25px; color: var(--accent); text-decoration: none; font-weight: 600;">Ver Detalhes →</a>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-github"></i></a>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+        <p style="color: var(--text-sub); font-size: 0.9rem;">© 2024 Seu Nome. Feito com paixão e pixels.</p>
+    </footer>
+
+</body>
+</html>
